@@ -224,7 +224,7 @@ public class keresoablak
 	            for (i = 0; i < files.length; i++)
 	            {	
 	            	
-	            	FileInputStream fis = new FileInputStream("z:\\RoHS,Reach, CFSI\\!CMRT\\" +files[i].getName());							//fájlok beolvaása egyesével
+	            	FileInputStream fis = new FileInputStream("z:\\RoHS,Reach, CFSI\\!CMRT\\" +files[i].getName());															//fájlok beolvaása egyesével
 				  XSSFWorkbook workbook = (XSSFWorkbook) WorkbookFactory.create(fis);  /*new XSSFWorkbook(fis); */															//excel fájl tároló létrehozása
 				  //Workbook workbook = WorkbookFactory.create(new FileInputStream("./inputFile.xls"));
 				  DataFormatter formatter = new DataFormatter();
@@ -237,7 +237,7 @@ public class keresoablak
 						  {
 						   for (Cell cell : row) 
 						   {
-						    System.out.print(cell.getAddress()+ ":" + formatter.formatCellValue(cell));
+						    System.out.print(cell.getAddress()+ ":" + formatter.formatCellValue(cell));																		//konzolra írja a talált cella tartalmát és számát
 						    //System.out.print(" ");
 						    model.addElement("Cella: " + cell.getAddress() + " Tartalma: " + formatter.formatCellValue(cell) + "  Fájl neve: "+ files[i].getName());		//Litához adja az eredményt, cella tartalmával, fájl nevével 
 						    eredmeny.add(cell.getAddress()+": "+ formatter.formatCellValue(cell) +"    " + files[i].getName());												//odaadja az eredményt egy köztes tömbnek, ami majd ki lesz írva egy excel fájlba
@@ -255,33 +255,39 @@ public class keresoablak
 			catch (EncryptedDocumentException e1) 
 			{
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				String hibauzenet = e1.toString();  
+                JOptionPane.showMessageDialog(null, hibauzenet, "Hiba üzenet", 2);
 			} 
 			
 			catch (FileNotFoundException e1) 
 			{
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				String hibauzenet = e1.toString();  
+                JOptionPane.showMessageDialog(null, hibauzenet, "Hiba üzenet", 2);
 			} 
 			catch (IOException e1) 
 			{
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				String hibauzenet = e1.toString();  
+                JOptionPane.showMessageDialog(null, hibauzenet, "Hiba üzenet", 2);
 			}
 			catch (java.lang.IllegalArgumentException e1) 
 			{
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				
 				JOptionPane.showMessageDialog(null, "Nincs ilyen tábla szám az egyik excelben. Fájl neve: "+files[i].getName(), "Tájékoztató Üzenet", 1);		//hibaüzenet ablak megnyitása ha nem volt találat
+				String hibauzenet = e1.toString();  
+                JOptionPane.showMessageDialog(null, hibauzenet, "Hiba üzenet", 2);
 			}
 			catch (RuntimeException e1) 
 			{
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
-				JOptionPane.showMessageDialog(null, "Hiba történt", "Tájékoztató Üzenet", 1);																	//hibaüzenet ablak megnyitása ha nem volt találat
+				String hibauzenet = e1.toString();  
+                JOptionPane.showMessageDialog(null, hibauzenet, "Hiba üzenet", 2);																	//hibaüzenet ablak megnyitása ha nem volt találat
 			} catch (InvalidFormatException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				String hibauzenet = e1.toString();  
+                JOptionPane.showMessageDialog(null, hibauzenet, "Hiba üzenet", 2);
 			} 
 			
 			JOptionPane.showMessageDialog(null, "Keresés véget ért", "Tájékoztató Üzenet", 1);																	//keresés végén felugró ablak
