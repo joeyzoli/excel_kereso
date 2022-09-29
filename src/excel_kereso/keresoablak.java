@@ -184,11 +184,12 @@ public class keresoablak
 		 {
 			 
 			model.removeAllElements();																	//törli a lista elemeit 
+			eredmeny.clear();
 			String keresettszo = keresomezo.getText();													//keresőmező tartalmát odaadja egy string változónak
 			
 			try
 			{
-				f = new File("z:\\RoHS,Reach, CFSI\\!CMRT\\");				//mappa beolvasása
+				f = new File("z:\\RoHS,Reach, CFSI\\!CMRT\\");											//mappa beolvasása
 				
 				FilenameFilter filter = new FilenameFilter() 											//fájlnév filter metódus
 				{
@@ -283,7 +284,7 @@ public class keresoablak
 			{
 				// TODO Auto-generated catch block
 				String hibauzenet = e1.toString();  
-                JOptionPane.showMessageDialog(null, hibauzenet, "Hiba üzenet", 2);																	//hibaüzenet ablak megnyitása ha nem volt találat
+                JOptionPane.showMessageDialog(null, hibauzenet, "Hiba üzenet", 2);																				//hibaüzenet ablak megnyitása ha nem volt találat
 			} catch (InvalidFormatException e1) {
 				// TODO Auto-generated catch block
 				String hibauzenet = e1.toString();  
@@ -320,9 +321,9 @@ public class keresoablak
 	            
 	           
       			
-				FileOutputStream out = new FileOutputStream(new File("z:\\RoHS,Reach, CFSI\\!CMRT smelter keresések\\" + keresomezo.getText() + " Smelter_szám.xlsx")); // fájl tipusú változó lértehozása
-				workbook.write(out);																															//kiírja az elöbb megadott fájlba az excel változót
-				out.close();																																	//fájl lezárása
+				FileOutputStream out = new FileOutputStream(new File("z:\\RoHS,Reach, CFSI\\!CMRT smelter keresések\\" + keresomezo.getText() + " Smelter_szám.xlsx")); 	// fájl tipusú változó lértehozása
+				workbook.write(out);																																		//kiírja az elöbb megadott fájlba az excel változót
+				out.close();																																				//fájl lezárása
           
             } 
 			catch (Exception e2) 
@@ -330,7 +331,7 @@ public class keresoablak
 				e2.printStackTrace();
 			}
 			
-			JOptionPane.showMessageDialog(null, "Exportálás véget ért", "Tájékoztató Üzenet", 1);		//exportálás végén megjelenő üzenet
+			JOptionPane.showMessageDialog(null, "Exportálás véget ért", "Tájékoztató Üzenet", 1);																	//exportálás végén megjelenő üzenet
 		 }
 		
 	}
